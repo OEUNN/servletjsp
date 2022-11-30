@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- import문 -->
 <%@ page import="java.util.*,dto.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,18 +14,8 @@
 	</head>
 	<body>
 		<div class="card">
-			<div class="card-head">exam01.jsp</div>
+			<div class="card-head">exam01_view.jsp</div>
 			<div class="card-body">
-				<%List<Board> boards = new ArrayList<>();%>
-				<% for(int i=1;i<10;i++) {
-					Board board = new Board();
-					board.setBno(i);
-					board.setBtitle("제목"+i);
-					board.setBcontent("내용"+i);
-					board.setBwriter("홍길동");
-					board.setBdate(new Date());
-					boards.add(board);
-				}%>
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -36,15 +27,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						<%for(Board board : boards){%>
+						<c:forEach var="board" items="${boards}">
 							<tr>
-								<td><%=board.getBno() %></td>
-								<td><%=board.getBtitle() %></td>
-								<td><%=board.getBcontent() %></td>
-								<td><%=board.getBwriter() %></td>
-								<td><%=board.getBdate() %></td>
+								<td>${board.bno}</td>
+								<td>${board.btitle}</td>
+								<td>${board.bcontent}</td>
+								<td>${board.bwriter}</td>
+								<td>${board.bdate}</td>	
 							</tr>
-						<%}%>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
