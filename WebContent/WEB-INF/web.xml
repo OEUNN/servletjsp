@@ -10,7 +10,46 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  	<!-- Listener 설정 -->
+  	<!-- deploy될때 -->
+  	<listener>
+  		<listener-class>context.WebAppContext</listener-class>
+  	</listener>
   
+  	<!-- Filter 설정 -->
+  	<!-- 서블릿 전에 전처리 -->
+  	<filter>
+  		<filter-name>CharacterEncodingFilter</filter-name>
+  		<filter-class>filter.CharacterEncodingFilter</filter-class>
+  		<init-param>
+  			<param-name>encoding</param-name>
+  			<param-value>UTF-8</param-value>
+  		</init-param>
+  	</filter>
+  	<filter-mapping>
+  		<filter-name>CharacterEncodingFilter</filter-name>
+  		<url-pattern>/*</url-pattern>
+  	</filter-mapping>
+  	
+  	<!-- Filter 설정 -->
+  	<filter>
+  		<filter-name>SecondFilter</filter-name>
+  		<filter-class>filter.SecondFilter</filter-class>
+  	</filter>
+  	<filter-mapping>
+  		<filter-name>SecondFilter</filter-name>
+  		<url-pattern>/*</url-pattern>
+  	</filter-mapping>
+  	
+ <!-- 방법1. 서블릿 클래스 -->
+<!-- 이름이 중복되면 안된다. -->
+<!-- 식별이름 작성 -->
+<!-- 최초요청할때 만들어 진다. -->
+<!-- was에서 웹 애플리케이션이 디플로이 될때 만들어진다. 1은 아무 의미 없다.(0이상의 값을 주면 된다.) -->
+<!-- 서블릿이 여러개일때 load-on-startup의 값이 1이 우선순위를 가진다.(두개가 1이면 동시에 생성된다.) -->
+<!-- 밑의 patter의 이름을 갖고있는 servlet이 실행된다. -->
+
+   <!-- 서블릿 설정 -->
   <servlet>
     <servlet-name>HomeController</servlet-name>
     <servlet-class>servlet.HomeController</servlet-class>
@@ -21,7 +60,7 @@
     <url-pattern>/HomeController</url-pattern>
   </servlet-mapping>
   
-  
+  <!-- 서블릿 설정 -->
   <servlet>
     <servlet-name>exam03.ContentController</servlet-name>
     <servlet-class>servlet.exam03.ContentController</servlet-class>
@@ -41,11 +80,25 @@
     <url-pattern>/exam03/ContentController</url-pattern>
   </servlet-mapping>
   
+  <session-config>
+ 	 <!-- 20분 후에  HttpSession 세션 제거(default:30분 -conf/web.xml) -->
+  	<session-timeout>20</session-timeout>
+  </session-config>
+  
+  <!-- 에러 페이지 설정 -->
+  <error-page>
+  	<error-code>500</error-code>
+  	<location>/WEB-INF/views/exam10/error_500.jsp</location>
+  </error-page>
+  
+  <!-- 우선순위를 같는다 500은 응답의 최종 마지막부분이기 때문이다. -->
+  <error-page>
+  	<exception-type>java.lang.NumberFormatException</exception-type>
+  	<location>/WEB-INF/views/exam10/error_num.jsp</location>
+  </error-page>
+  
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/WEB-INF/views/exam10/error_404.jsp</location>
+  </error-page>
 </web-app>
-<!-- 방법1. 서블릿 클래스 -->
-<!-- 이름이 중복되면 안된다. -->
-<!-- 식별이름 작성 -->
-<!-- 최초요청할때 만들어 진다. -->
-<!-- was에서 웹 애플리케이션이 디플로이 될때 만들어진다. 1은 아무 의미 없다.(0이상의 값을 주면 된다.) -->
-<!-- 서블릿이 여러개일때 load-on-startup의 값이 1이 우선순위를 가진다.(두개가 1이면 동시에 생성된다.) -->
-<!-- 밑의 patter의 이름을 갖고있는 servlet이 실행된다. -->

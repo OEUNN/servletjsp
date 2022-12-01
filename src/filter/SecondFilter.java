@@ -1,0 +1,26 @@
+package filter;
+
+import java.io.IOException;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+
+//필터가 여러개 하면 앞에꺼 먼저 실행하고 두번째거 실행한다.
+public class SecondFilter implements Filter{
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
+		//전처리
+//		System.out.println("전처리2합니다.");
+		
+		//-----------------------------------------------------------------
+		filterChain.doFilter(request, response);	//다음 필터 또는 서블릿으로 이동
+		//-----------------------------------------------------------------
+		
+		//후처리
+//		System.out.println("후처리2합니다.");
+	}
+}

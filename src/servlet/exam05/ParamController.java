@@ -29,7 +29,8 @@ public class ParamController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//한글 문자 얻기
-		request.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
+		//서블릿실행하기전에 전처리로 실행했기 때문에 따로 해줄 필요가 없다.
 		
 		String email=request.getParameter("email");
 		String pwd=request.getParameter("pwd");
