@@ -18,7 +18,8 @@ public class ContentController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.sendRedirect("/servletjsp/HomeController");
+		//request가 가진 필드가 아니다.
+		response.sendRedirect(request.getContextPath()+"/HomeController");
 		//doPost(){ sendRedirece(..);}에서  뒤에
 	}
 }

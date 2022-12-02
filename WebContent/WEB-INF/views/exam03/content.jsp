@@ -9,7 +9,7 @@
 	</div>
 	<div class="card-body">
 		<h4 class="mt-3">POST 방식</h4>
-		<form method="post" action="/servletjsp/exam03/ContentController">
+		<form method="post" action="${pageContext.request.contextPath}/exam03/ContentController">
 			<input type="text" name="param1" value="홍길동"/><br/>
 			<input type="submit" value="Home으로 제출" class="btn btn-info btn-sm"/>
 		</form>

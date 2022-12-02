@@ -9,9 +9,9 @@
 	</div>
 	<div class="card-body">
 		<h4>GET 방식</h4>
-		<a href="/servletjsp/exam02/GetController?param1=value1&param2=value2" class="btn btn-info btn-sm">링크로 이동</a>
+		<a href="${pageContext.request.contextPath}/exam02/GetController?param1=value1&param2=value2" class="btn btn-info btn-sm">링크로 이동</a>
 		<hr/>
-		<form method="get" action="/servletjsp/exam02/GetController">
+		<form method="get" action="${pageContext.request.contextPath}/exam02/GetController">
 			<input type="text" name="param3" value="value3"/><br/>
 			<input type="text" name="param4" value="value4"/><br/>
 			<input type="submit" value="Home으로 제출" class="btn btn-info btn-sm"/>

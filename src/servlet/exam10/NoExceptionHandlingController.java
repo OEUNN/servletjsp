@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 public class NoExceptionHandlingController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String data="1oo";
-		int num=Integer.parseInt(data);
+		//String data="1oo";
+		//int num=Integer.parseInt(data);
 		
 		response.sendRedirect("ContentController");
 		//처리를 하지 않으면 500처리가 발생하게 된다.
