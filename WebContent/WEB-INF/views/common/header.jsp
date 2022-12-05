@@ -14,7 +14,7 @@
 	</head>
 	<body>
 		<div class="d-flex flex-column vh-100">
-			<nav class="navbar navbar-dark bg-dark text-white font-weight-bold">
+			<nav class="navbar navbar-dark bg-dark text-white font-weight-bold ">
 				<a class="navbar-brand" href="/servletjsp/HomeController"> 
 					<img src="${pageContext.request.contextPath}/resources/images/tomcat.png" width="40" height="30" class="d-inline-block align-top">
 					Servlet/JSP
@@ -23,6 +23,7 @@
 					<div>
 					<%-- 로그인은 세션을 이용한다. --%>
 						<c:if test="${loginId==null}">
+							<span class="mr-2">${loginId}</span>
 						<%--안쪽이 맞으면 true --%>
 							<a href="${pageContext.request.contextPath}/exam07/SaveSessionController" class="btn btn-success btn-sm">로그인</a>
 						</c:if>
